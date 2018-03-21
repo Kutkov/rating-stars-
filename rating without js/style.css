@@ -1,0 +1,39 @@
+.rating-count {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.rating-count input {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+.rating-count input + label {
+  font-size: 0;
+  display: block;
+  width: 22px;
+  height: 21px;
+  cursor: pointer;
+  background: url(img/rating-star.svg) no-repeat center / contain,
+              url(img/rating-star_fill.svg) no-repeat center / 0 0,
+              url(img/rating-star_focus.svg) no-repeat center / 0 0;
+              /* небольшой приём для предзагрузки изображения,
+                 дабы не делать спрайт и инлайном не вставлять SVG */
+}
+
+.rating-count input + label:hover,
+.rating-count input + label:hover ~ label,
+.rating-count:not(:hover) input:checked + label,
+.rating-count:not(:hover) input:checked + label ~ label {
+  background-image: url(img/rating-star_fill.svg);
+}
+
+.rating-count:not(:hover) input:focus + label {
+  background-image: url(img/rating-star_focus.svg);
+}
